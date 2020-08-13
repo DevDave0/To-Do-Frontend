@@ -3,7 +3,7 @@ import Category from '../components/Category'
 
 const CategoryContainer = () => {
     return (
-        <div>
+        <div className="Categories">
             <h1> CategoryContainer</h1>
             <Category />
         </div>

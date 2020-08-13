@@ -3,7 +3,7 @@ import Task from '../components/Task'
 
 const TaskContainer = () => {
     return (
-        <div>
+        <div className="Tasks">
             <h1> TaskContainer</h1>
             <Task />
         </div>
