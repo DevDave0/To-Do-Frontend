@@ -12,7 +12,21 @@ class SignUp extends Component {
 
     signUp = (e) => {
         e.preventDefault()
-
+        
+        fetch('http://localhost:3000/users', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                name: this.state.name,
+                password: this.state.password
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            localStorage.token = data.token
+        })
     }
 
     render() {
