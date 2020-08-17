@@ -1,7 +1,7 @@
 import React from 'react'
-import CategoryContainer from './containers/CategoryContainer'
-import TaskContainer from './containers/TaskContainer'
-import TaskListContainer from './containers/TaskListContainer'
+import CategoryContainer from '../containers/CategoryContainer'
+import TaskContainer from '../containers/TaskContainer'
+import TaskListContainer from '../containers/TaskListContainer'
 
 const TaskPage = () => {
     return (
