@@ -6,3 +6,10 @@ export const CATEGORIES = [
     'Gym',
     'Misc'
 ]
+
+
+export const DIFFICULTY = [
+    'Easy',
+    'Medium',
+    'Hard'
+]

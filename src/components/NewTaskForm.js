@@ -1,29 +1,41 @@
 import React, { useState } from 'react'
-import { CATEGORIES } from '../data';
+import { CATEGORIES, DIFFICULTY } from '../data';
 
 const NewTaskForm = (props) => {
 
     let { addNewTask } = props
     const [name, setName] = useState('')
     const [category, setCategory] = useState('Code')
+    const [difficulty, setDifficulty] = useState('Easy')
 
 
     const submit = (e) => {
         e.preventDefault()
-        addNewTask({ name, category})
+        addNewTask({ name, category, difficulty})
         setName('')
         setCategory('Code')
+        setDifficulty('Easy')
     }
 
     return(
         <form className='new-task-form' onSubmit={submit}>
             <input placeholder='New Task' type='text' value={name} onChange={(e) => setName(e.target.value)} />
+
             <select value={props.category} onChange={(e) => setCategory(e.target.value)}>
                 {
                     CATEGORIES.filter(category => category !== 'All')
                     .map(category => <option key={category}>{category}</option>)
                 }
             </select>
+
+            <select value={props.difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+                {
+                    DIFFICULTY.filter(diff => diff !== '')
+                    .map(diff => <option key={diff}>{diff}</option>)
+                }
+            </select>
+
+
             <input type='submit' value='Add task' />
         </form>
     )
