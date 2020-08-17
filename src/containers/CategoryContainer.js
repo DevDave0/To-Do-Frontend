@@ -1,11 +1,12 @@
 import React from 'react'
 import Category from '../components/Category'
 
-const CategoryContainer = () => {
+const CategoryContainer = (props) => {
     return (
         <div className="Categories">
             <h1> CategoryContainer</h1>
-            <Category />
+            {props.tasks.map(task => <Category key={task.id} task={task} />)}
+
         </div>
     )
 

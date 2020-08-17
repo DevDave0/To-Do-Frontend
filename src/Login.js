@@ -28,6 +28,9 @@ class Login extends Component {
         .then(data => {
             localStorage.token = data.token
         })
+
+        // console.log(this.props.routeProps.history)
+        this.props.routeProps.history.push("/task_page")
     }
 
     render() {

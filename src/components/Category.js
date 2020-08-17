@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Category = () => {
+const Category = (props) => {
     return (
         <div className="category-item">
-            <h4> Category</h4>
+            <h6> Category</h6>
+            <div>{props.task.category}</div>
         </div>
     )
 

@@ -13,13 +13,15 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
           
-            <SignUp />
-            <br></br>
-            <Login />
-          </header>
+          <Route path="/sign_up" render={(routeProps) => <SignUp routeProps={routeProps} />} />
           
-          {/* <Route path="/sign_up" component={ SignUp } /> */}
+          <Route path="/login" render={(routeProps) => <Login routeProps={routeProps} />} />
           <Route path="/task_page" component={ TaskPage } />
+            <br></br>
+
+          </header>
+
+
         </div>
       </BrowserRouter>
       

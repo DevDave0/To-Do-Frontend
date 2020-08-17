@@ -27,6 +27,8 @@ class SignUp extends Component {
         .then(data => {
             localStorage.token = data.token
         })
+
+        this.props.routeProps.history.push("/task_page")
     }
 
     render() {
