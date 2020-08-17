@@ -6,6 +6,7 @@ import Login from './Login'
 import TaskPage from './containers/TaskPage'
 import Board from './components/Board'
 import {BrowserRouter, Route} from 'react-router-dom'
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends React.Component {
   render(){
