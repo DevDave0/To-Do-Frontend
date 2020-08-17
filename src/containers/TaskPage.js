@@ -3,13 +3,15 @@ import CategoryContainer from '../containers/CategoryContainer'
 import TaskContainer from '../containers/TaskContainer'
 import TaskListContainer from '../containers/TaskListContainer'
 import Profile from '../components/Profile'
+import { CATEGORIES } from '../data'
 
 import { Link } from 'react-router-dom'
 
 class TaskPage extends React.Component {
 
     state = {
-        tasks: []
+        tasks: [],
+        selectedCategory: 'All',
     }
 
     componentDidMount() {
@@ -27,6 +29,12 @@ class TaskPage extends React.Component {
         })
     }
 
+    setSelectedCategory = (category) => {
+        this.setState({
+            selectedCategory: category
+        })
+    }
+
     render(){
         return (
             <div className="Tasks">
@@ -34,8 +42,18 @@ class TaskPage extends React.Component {
     
                 
                 <h1>TO DO LIST</h1>
-                    <TaskListContainer tasks={this.state.tasks} />
-                    <CategoryContainer tasks={this.state.tasks} />
+                    <TaskListContainer tasks={this.state.tasks} />  
+                    <br></br>
+
+                    <CategoryContainer 
+                        tasks={this.state.tasks} 
+                        categories={CATEGORIES}
+                        selectedCategory={this.state.selectedCategory}
+                        setSelectedCategory={this.setSelectedCategory}
+                    />
+
+                    <br></br>
+
                     <TaskContainer tasks={this.state.tasks} />
                     <Profile />
 

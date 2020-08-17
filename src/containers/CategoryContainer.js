@@ -2,11 +2,13 @@ import React from 'react'
 import Category from '../components/Category'
 
 const CategoryContainer = (props) => {
+    let { selectedCategory, setSelectedCategory, categories } = props
+    
+    
     return (
         <div className="Categories">
-            <h1> CategoryContainer</h1>
-            {props.tasks.map(task => <Category key={task.id} task={task} />)}
-
+            <h3> CategoryContainer</h3>
+            {categories.map(category => <button className={category === selectedCategory ? 'selected' : undefined} onClick={() => setSelectedCategory(category)} key={category} >{category}</button>)}
         </div>
     )
 
