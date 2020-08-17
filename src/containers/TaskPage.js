@@ -2,6 +2,9 @@ import React from 'react'
 import CategoryContainer from '../containers/CategoryContainer'
 import TaskContainer from '../containers/TaskContainer'
 import TaskListContainer from '../containers/TaskListContainer'
+import Profile from '../components/Profile'
+
+import { Link } from 'react-router-dom'
 
 class TaskPage extends React.Component {
 
@@ -34,6 +37,9 @@ class TaskPage extends React.Component {
                     <TaskListContainer tasks={this.state.tasks} />
                     <CategoryContainer tasks={this.state.tasks} />
                     <TaskContainer tasks={this.state.tasks} />
+                    <Profile />
+
+                    < Link to='/board'>Message Board</Link>
     
             </div>
         )

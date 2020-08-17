@@ -4,6 +4,7 @@ import './App.css';
 import SignUp from './SignUp'
 import Login from './Login'
 import TaskPage from './containers/TaskPage'
+import Board from './components/Board'
 import {BrowserRouter, Route} from 'react-router-dom'
 
 class App extends React.Component {
@@ -17,6 +18,8 @@ class App extends React.Component {
           
           <Route path="/login" render={(routeProps) => <Login routeProps={routeProps} />} />
           <Route path="/task_page" component={ TaskPage } />
+          <Route path="/board" component={ Board } />
+
             <br></br>
 
           </header>
