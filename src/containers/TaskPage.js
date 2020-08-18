@@ -15,7 +15,7 @@ class TaskPage extends React.Component {
     state = {
         tasks: [],
         selectedCategory: 'All',
-        showForm: false,
+        showForm: false
     }
 
     componentDidMount() {
@@ -80,7 +80,18 @@ class TaskPage extends React.Component {
 
     }
 
+    filteredTasks = () =>
+    this.state.tasks.filter(
+      t =>
+        this.state.selectedCategory === 'All' ||
+        t.category === this.state.selectedCategory
+    )
+
+
     render(){
+
+        const tasks = this.filteredTasks()
+
         return (
             <div className="Tasks">
                 <h1> TaskPage</h1>
@@ -111,7 +122,7 @@ class TaskPage extends React.Component {
 
                     <br></br>
 
-                    <TaskContainer tasks={this.state.tasks} deleteTask={this.deleteTask} />
+                    <TaskContainer tasks={tasks} deleteTask={this.deleteTask} />
                     <Profile />
 
                     < Link to='/board'>Message Board</Link>
