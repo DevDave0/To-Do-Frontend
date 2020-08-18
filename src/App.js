@@ -13,8 +13,6 @@ class App extends React.Component {
 
   state = {
     loggedIn: false,
-    // username: "",
-    // password: ""
   }
 
   componentDidMount() {
@@ -52,9 +50,30 @@ class App extends React.Component {
           this.setState({loggedIn: true})
       })
 
-      // this.props.routeProps.history.push("/task_page")
   }
 
+  signUp = (e) => {
+    e.preventDefault()
+    
+    fetch('http://localhost:3000/users', {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+            name: this.state.name,
+            password: this.state.password
+        })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        localStorage.token = data.token
+        localStorage.userName = data.user.name 
+        localStorage.userId = data.user.id
+        this.setState({loggedIn: true})
+    })
+
+}
 
 
 
@@ -64,7 +83,8 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
           
-          <Route path="/sign_up" render={(routeProps) => <SignUp routeProps={routeProps} />} />
+          <Route path="/sign_up" render={(routeProps) => (this.state.loggedIn) ? <Redirect to='/task_page' /> :
+          <SignUp routeProps={routeProps} handleChange={this.handleChange} signUp={this.signUp} />} />
           
           <Route path="/login" render={(routeProps) => (this.state.loggedIn) ? <Redirect to='/task_page' /> :
           <Login routeProps={routeProps} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />} />

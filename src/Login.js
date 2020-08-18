@@ -5,34 +5,6 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'seman
 
 class Login extends Component {
 
-
-    // handleChange = (e) => {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-    // handleSubmit = (e) => {
-    //     e.preventDefault()
-
-    //     fetch('http://localhost:3000/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type' : "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             name: this.state.name,
-    //             password: this.state.password
-    //         })
-    //     })
-    //     .then( resp => resp.json())
-    //     .then(data => {
-    //         localStorage.token = data.token
-    //     })
-
-    //     this.props.routeProps.history.push("/task_page")
-    // }
-
     render() {
         return(
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -56,7 +28,7 @@ class Login extends Component {
                     New to us? < Link to='/sign_up'>Sign Up</Link>
                 </Message>
                 
-             </Grid.Column>
+                </Grid.Column>
             </Grid>
 
 
