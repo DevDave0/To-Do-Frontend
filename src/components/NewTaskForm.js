@@ -9,23 +9,13 @@ const NewTaskForm = (props) => {
     const [difficulty, setDifficulty] = useState('Easy')
     const [experience_points, setExpPoints] = useState(1)
 
-    // setExpPoints = (difficulty) => {
-    //     if(difficulty === 'Easy')
-    //         return 2
-    //     if(difficulty === 'Medium')
-    //         return 5
-    //     if(difficulty === 'Hard')
-    //         return 10
-    // }
-
-
     const submit = (e) => {
         e.preventDefault()
         setName('')
         setCategory('Code')
         setDifficulty('Easy')
         setExpPoints(1)
-        addNewTask({ name, category, difficulty, experience_points })
+        addNewTask({ name, category, difficulty, experience_points})
     }
 
     return(
@@ -61,19 +51,3 @@ const NewTaskForm = (props) => {
 }
 
 export default NewTaskForm
-
-//     return (
-//         <form className="new-task-form" onSubmit={submit}>
-//             <input placeholder="New task details" type="text" value={text} onChange={e => setText(e.target.value)} />
-//             <select value={category} onChange={e => setCategory(e.target.value)}>
-//                 {
-//                     CATEGORIES
-//                         .filter(cat => cat !== 'All')
-//                         .map(cat => <option key={cat}>{cat}</option>)
-//                 }
-//             </select>
-//             <input type="submit" value="Add task" />
-//         </form>
-//     )
-// }
-

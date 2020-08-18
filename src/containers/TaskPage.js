@@ -40,9 +40,7 @@ class TaskPage extends React.Component {
     }
 
     addNewTask = (newTask) => {
-        // this.setState({
-        //     tasks: [...this.state.tasks, newTask]
-        // })
+
         fetch('http://localhost:3000/tasks', {
             method: "POST",
             headers: {
@@ -50,6 +48,7 @@ class TaskPage extends React.Component {
                 Authorization: `Bearer ${localStorage.token}`
             },
             body: JSON.stringify({
+                id: newTask.id,
                 name: newTask.name,
                 category: newTask.category,
                 experience_points: newTask.experience_points,
@@ -62,6 +61,25 @@ class TaskPage extends React.Component {
         }))
     }
 
+    deleteTask = (task) => {
+
+        console.log(task.id)
+        fetch(`http://localhost:3000/tasks/${task.id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(() => {
+            let remainingTasks = this.state.tasks.filter(t => !(t === task))
+            this.setState({
+                tasks: remainingTasks
+            })
+        })
+
+    }
+
     render(){
         return (
             <div className="Tasks">
@@ -69,7 +87,6 @@ class TaskPage extends React.Component {
     
                 
                 <h1>TO DO LIST</h1>
-                    <TaskListContainer tasks={this.state.tasks} />  
                     <br></br>
 
                     <CategoryContainer 
@@ -94,7 +111,7 @@ class TaskPage extends React.Component {
 
                     <br></br>
 
-                    <TaskContainer tasks={this.state.tasks} />
+                    <TaskContainer tasks={this.state.tasks} deleteTask={this.deleteTask} />
                     <Profile />
 
                     < Link to='/board'>Message Board</Link>
