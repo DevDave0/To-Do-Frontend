@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CATEGORIES, DIFFICULTY } from '../data';
+import { CATEGORIES, DIFFICULTY, EXPERIENCE } from '../data';
 
 const NewTaskForm = (props) => {
 
@@ -7,14 +7,25 @@ const NewTaskForm = (props) => {
     const [name, setName] = useState('')
     const [category, setCategory] = useState('Code')
     const [difficulty, setDifficulty] = useState('Easy')
+    const [experience_points, setExpPoints] = useState(1)
+
+    // setExpPoints = (difficulty) => {
+    //     if(difficulty === 'Easy')
+    //         return 2
+    //     if(difficulty === 'Medium')
+    //         return 5
+    //     if(difficulty === 'Hard')
+    //         return 10
+    // }
 
 
     const submit = (e) => {
         e.preventDefault()
-        addNewTask({ name, category, difficulty})
         setName('')
         setCategory('Code')
         setDifficulty('Easy')
+        setExpPoints(1)
+        addNewTask({ name, category, difficulty, experience_points })
     }
 
     return(
@@ -32,6 +43,13 @@ const NewTaskForm = (props) => {
                 {
                     DIFFICULTY.filter(diff => diff !== '')
                     .map(diff => <option key={diff}>{diff}</option>)
+                }
+            </select>
+
+            <select value={props.experience_points} onChange={(e) => setExpPoints(e.target.value)}>
+                {
+                    EXPERIENCE.filter(exp => exp !== '')
+                    .map(exp => <option key={exp}>{exp}</option>)
                 }
             </select>
 

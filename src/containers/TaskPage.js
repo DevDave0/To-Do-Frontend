@@ -37,9 +37,26 @@ class TaskPage extends React.Component {
     }
 
     addNewTask = (newTask) => {
-        this.setState({
-            tasks: [...this.state.tasks, newTask]
+        // this.setState({
+        //     tasks: [...this.state.tasks, newTask]
+        // })
+        fetch('http://localhost:3000/tasks', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify({
+                name: newTask.name,
+                category: newTask.category,
+                experience_points: newTask.experience_points,
+                difficulty: newTask.difficulty
+            })
         })
+        .then(resp => resp.json())
+        .then(task => this.setState({
+            tasks: [...this.state.tasks, task]
+        }))
     }
 
     render(){

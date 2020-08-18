@@ -10,6 +10,22 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
 
 class App extends React.Component {
+
+  state = {
+    loggedIn: false,
+    username: "",
+    password: ""
+  }
+
+  componentDidMount() {
+    if(localStorage.token) {
+      this.setState({
+        loggedIn: true
+      })
+    }
+  }
+
+
   render(){
     return (
       <BrowserRouter>
