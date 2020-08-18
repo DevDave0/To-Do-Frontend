@@ -6,33 +6,32 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'seman
 class Login extends Component {
 
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    // handleChange = (e) => {
+    //     this.setState({
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
+    // handleSubmit = (e) => {
+    //     e.preventDefault()
 
-        fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : "application/json"
-            },
-            body: JSON.stringify({
-                name: this.state.name,
-                password: this.state.password
-            })
-        })
-        .then( resp => resp.json())
-        .then(data => {
-            localStorage.token = data.token
-        })
+    //     fetch('http://localhost:3000/login', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type' : "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             name: this.state.name,
+    //             password: this.state.password
+    //         })
+    //     })
+    //     .then( resp => resp.json())
+    //     .then(data => {
+    //         localStorage.token = data.token
+    //     })
 
-        // console.log(this.props.routeProps.history)
-        this.props.routeProps.history.push("/task_page")
-    }
+    //     this.props.routeProps.history.push("/task_page")
+    // }
 
     render() {
         return(
@@ -42,12 +41,12 @@ class Login extends Component {
                         <Icon name='check circle' />
                         Log-in to your account
                     </Header>
-                <form size='large' onSubmit={(e)=> this.handleSubmit(e)}>
+                <form size='large' onSubmit={(e)=> this.props.handleSubmit(e)}>
                     <Segment stacked>
 
-                        <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' onChange={(e) => this.handleChange(e)} name='name' type='text' />
+                        <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' onChange={(e) => this.props.handleChange(e)} name='name' type='text' />
 
-                        <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' onChange={(e) => this.handleChange(e)} name='password' type='password'  />
+                        <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' onChange={(e) => this.props.handleChange(e)} name='password' type='password'  />
                         <br></br>
                         <Form.Input type='submit'/>
                     </Segment>
