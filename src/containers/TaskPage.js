@@ -87,6 +87,7 @@ class TaskPage extends React.Component {
                     <Profile />
 
                     < Link to='/board'>Message Board</Link>
+                    <button onClick={(e)=> this.props.logOut(e)}>Log Out</button>
     
             </div>
         )

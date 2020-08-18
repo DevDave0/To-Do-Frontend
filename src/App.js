@@ -101,7 +101,8 @@ class App extends React.Component {
           <Route path="/login" render={(routeProps) => (this.state.loggedIn) ? <Redirect to='/task_page' /> :
           <Login routeProps={routeProps} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />} />
 
-          <Route path="/task_page" render={(routeProps) => <TaskPage logOut={this.logOut} /> }/>
+          <Route path="/task_page" render={(routeProps) => (this.state.loggedIn) ? <TaskPage logOut={this.logOut} /> :
+          <Redirect to='/login' /> }/>
           {/* component={ TaskPage }  */}
           <Route path="/board" component={ Board } />
 
