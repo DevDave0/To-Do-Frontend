@@ -4,6 +4,8 @@ import TaskContainer from '../containers/TaskContainer'
 import TaskListContainer from '../containers/TaskListContainer'
 import Profile from '../components/Profile'
 import NewTaskForm from '../components/NewTaskForm'
+import FormToggle from '../components/FormToggle'
+
 import { CATEGORIES } from '../data'
 
 import { Link } from 'react-router-dom'
@@ -13,6 +15,7 @@ class TaskPage extends React.Component {
     state = {
         tasks: [],
         selectedCategory: 'All',
+        showForm: false,
     }
 
     componentDidMount() {
@@ -78,9 +81,17 @@ class TaskPage extends React.Component {
 
                     <br></br>
                     <h2>Tasks</h2>
+                    <FormToggle 
+                        on={this.state.showForm}
+                        toggle={() => this.setState({
+                            showForm: !this.state.showForm
+                        })}
+                    />
+                    {this.state.showForm && (
                     <NewTaskForm
                         addNewTask={this.addNewTask}
-                    />
+                    />)}
+
                     <br></br>
 
                     <TaskContainer tasks={this.state.tasks} />
