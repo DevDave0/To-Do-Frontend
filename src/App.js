@@ -75,6 +75,18 @@ class App extends React.Component {
 
 }
 
+  logOut = (e) => {
+    e.preventDefault()
+    this.setState({
+      name: "",
+      password: "",
+      loggedIn: false,
+    },
+    localStorage.clear(),
+    alert("You have logged out!")
+    )
+  }
+
 
 
   render(){
@@ -89,7 +101,8 @@ class App extends React.Component {
           <Route path="/login" render={(routeProps) => (this.state.loggedIn) ? <Redirect to='/task_page' /> :
           <Login routeProps={routeProps} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />} />
 
-          <Route path="/task_page" component={ TaskPage } />
+          <Route path="/task_page" render={(routeProps) => <TaskPage logOut={this.logOut} /> }/>
+          {/* component={ TaskPage }  */}
           <Route path="/board" component={ Board } />
 
             <br></br>
