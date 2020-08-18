@@ -1,7 +1,7 @@
 import React from 'react'
 import CategoryContainer from '../containers/CategoryContainer'
 import TaskContainer from '../containers/TaskContainer'
-import TaskListContainer from '../containers/TaskListContainer'
+// import TaskListContainer from '../containers/TaskListContainer'
 import Profile from '../components/Profile'
 import NewTaskForm from '../components/NewTaskForm'
 import FormToggle from '../components/FormToggle'
@@ -64,7 +64,7 @@ class TaskPage extends React.Component {
     deleteTask = (task) => {
 
         console.log(task.id)
-        fetch(`http://localhost:3000/tasks/${task.id}`, {
+        fetch(`http://localhost:3000/tasks/${task.id}`,{
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'

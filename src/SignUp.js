@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'semantic-ui-react'
+import { Form, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react'
 
 
 class SignUp extends Component {
