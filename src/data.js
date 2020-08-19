@@ -11,7 +11,8 @@ export const CATEGORIES = [
 export const DIFFICULTY = [
     'Easy',
     'Medium',
-    'Hard'
+    'Hard',
+    'Very Hard'
 ]
 
 export const EXPERIENCE = [

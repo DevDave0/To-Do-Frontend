@@ -45,7 +45,8 @@ class TaskPage extends React.Component {
         })
     }
 
-    addNewTask = (newTask) => {
+    addNewTask = ( newTask) => {
+
         fetch('http://localhost:3000/tasks', {
             method: "POST",
             headers: {
@@ -95,9 +96,7 @@ class TaskPage extends React.Component {
         })
         .then(resp => resp.json())
         .then(() => {
-            // add the tasks experience points attribute to the user.experience_bar
             this.addExperiencePoints(e, task);
-
             let remainingTasks = this.state.tasks.filter(t => !(t === task))
             this.setState({
                 tasks: remainingTasks
@@ -190,7 +189,6 @@ class TaskPage extends React.Component {
                     />
                     <Profile 
                         username={localStorage.userName}
-                        avatar={localStorage.avatar}
                         experience_bar={localStorage.experience_bar}
                     />
 

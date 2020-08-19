@@ -16,6 +16,20 @@ const NewTaskForm = (props) => {
         setDifficulty('Easy')
         setExpPoints(1)
         addNewTask({ name, category, difficulty, experience_points})
+
+    }
+
+    const setDifficultyAndExp = (e) => {
+        setDifficulty(e.target.value)
+        if(e.target.value === 'Easy'){
+            setExpPoints(1)
+        } else if (e.target.value === 'Medium'){
+            setExpPoints(5)
+        } else if (e.target.value === 'Hard'){
+            setExpPoints(10)
+        } else if (e.target.value === 'Very Hard'){
+            setExpPoints(20)
+        }
     }
 
     return(
@@ -29,17 +43,10 @@ const NewTaskForm = (props) => {
                 }
             </select>
 
-            <select value={props.difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+            <select value={props.difficulty} onChange={(e) => setDifficultyAndExp(e)}>
                 {
                     DIFFICULTY.filter(diff => diff !== '')
                     .map(diff => <option key={diff}>{diff}</option>)
-                }
-            </select>
-
-            <select value={props.experience_points} onChange={(e) => setExpPoints(e.target.value)}>
-                {
-                    EXPERIENCE.filter(exp => exp !== '')
-                    .map(exp => <option key={exp}>{exp}</option>)
                 }
             </select>
 
