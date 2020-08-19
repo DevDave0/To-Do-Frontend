@@ -7,13 +7,15 @@ import FormToggle from '../components/FormToggle'
 import { CATEGORIES } from '../data'
 import { Link } from 'react-router-dom'
 
+
 class TaskPage extends React.Component {
 
     state = {
         tasks: [],
         selectedCategory: 'All',
         showForm: false,
-        exp: parseInt(localStorage.experience_bar,10)
+        exp: parseInt(localStorage.experience_bar,10),
+        img: localStorage.avatar
     }
 
     componentDidMount() {
@@ -27,8 +29,9 @@ class TaskPage extends React.Component {
         .then(data => {
             let name = localStorage.userName
             let result = data.filter(task => {
-                if (task.users[0].name === name)
-                return task
+                if (task.users[0].name === name){
+                    return task
+                }
             })
             this.setState({
                 tasks: result
@@ -103,11 +106,7 @@ class TaskPage extends React.Component {
     }
 
     addExperiencePoints = (e, task) => {
-        e.preventDefault();
-        // Patch request to the User/:id 
-        // take the task, and get the task.experience_points, and
-        // PATCH the experience_points by adding it to user.experience_bar within the 
-        // Body of the request.
+        e.persist();
 
         fetch(`http://localhost:3000/users/${localStorage.userId}`, {
             method: 'PATCH',
