@@ -47,6 +47,8 @@ class App extends React.Component {
           localStorage.token = data.token
           localStorage.userName = data.user.name 
           localStorage.userId = data.user.id
+          localStorage.avatar = data.user.avatar 
+          localStorage.experience_bar = data.user.experience_bar
           this.setState({loggedIn: true})
       })
 
@@ -70,6 +72,8 @@ class App extends React.Component {
         localStorage.token = data.token
         localStorage.userName = data.user.name 
         localStorage.userId = data.user.id
+        localStorage.avatar = data.user.avatar 
+        localStorage.experience_bar = data.user.experience_bar
         this.setState({loggedIn: true})
     })
 
