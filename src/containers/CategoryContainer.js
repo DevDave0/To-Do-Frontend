@@ -7,7 +7,7 @@ const CategoryContainer = (props) => {
     
     return (
         <div className="Categories">
-            <h3> CategoryContainer</h3>
+            <h4> Filter Categories</h4>
             {categories.map(category => <button className={category === selectedCategory ? 'selected' : undefined} onClick={() => setSelectedCategory(category)} key={category} >{category}</button>)}
         </div>
     )

@@ -56,14 +56,33 @@ class TaskPage extends React.Component {
             })
         })
         .then(resp => resp.json())
-        .then(task => this.setState({
-            tasks: [...this.state.tasks, task]
-        }))
+        .then(task => 
+            this.createTasklist(task)
+        )
+    }
+
+    createTasklist = (task) => {
+
+        fetch('http://localhost:3000/tasklists', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify({
+                user_id: localStorage.userId,
+                task_id: task.id
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            this.setState({tasks: [...this.state.tasks, data.task]})
+        })
+
     }
 
     deleteTask = (task) => {
 
-        console.log(task.id)
         fetch(`http://localhost:3000/tasks/${task.id}`,{
             method: "DELETE",
             headers: {
