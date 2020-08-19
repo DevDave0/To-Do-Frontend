@@ -2,7 +2,7 @@ import React from 'react'
 
 const Task = (props) => {
     let { name, difficulty, experience_points, category } = props.task
-    let { completeTask } = props
+    let { completeTask, deleteTask } = props
     return (
         <div className="task-item">
 
@@ -10,7 +10,8 @@ const Task = (props) => {
             <div>{name}</div>
             <div>{difficulty}</div>
             <div>{`Experience points: ${experience_points}`}</div>
-            <button className="delete" onClick={(e) => completeTask(e, props.task)}>Complete Task</button>
+            <button className="complete" onClick={(e) => completeTask(e, props.task)}>Complete Task</button>
+            <button className="delete" onClick={(e) => deleteTask(e, props.task)}>Delete Task</button>
             <br></br>
             <br></br>
         </div>

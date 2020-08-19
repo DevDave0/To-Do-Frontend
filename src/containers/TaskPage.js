@@ -127,6 +127,26 @@ class TaskPage extends React.Component {
         })
     }
 
+    deleteTask =(e, task) => {
+        e.preventDefault() 
+
+        fetch(`http://localhost:3000/tasks/${task.id}`,{
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(() => {
+
+            let remainingTasks = this.state.tasks.filter(t => !(t === task))
+            this.setState({
+                tasks: remainingTasks
+            })
+
+        })
+    }
+
     filteredTasks = () =>
     this.state.tasks.filter(
       t =>
@@ -164,7 +184,11 @@ class TaskPage extends React.Component {
                     />)}
 
                     <br></br>
-                    <TaskContainer tasks={tasks} completeTask={this.completeTask} />
+                    <TaskContainer 
+                        tasks={tasks} 
+                        completeTask={this.completeTask} 
+                        deleteTask={this.deleteTask}
+                    />
                     <Profile 
                         username={localStorage.userName}
                         avatar={localStorage.avatar}
