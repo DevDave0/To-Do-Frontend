@@ -1,13 +1,10 @@
 import React from 'react'
 import CategoryContainer from '../containers/CategoryContainer'
 import TaskContainer from '../containers/TaskContainer'
-// import TaskListContainer from '../containers/TaskListContainer'
 import Profile from '../components/Profile'
 import NewTaskForm from '../components/NewTaskForm'
 import FormToggle from '../components/FormToggle'
-
 import { CATEGORIES } from '../data'
-
 import { Link } from 'react-router-dom'
 
 class TaskPage extends React.Component {
@@ -15,7 +12,8 @@ class TaskPage extends React.Component {
     state = {
         tasks: [],
         selectedCategory: 'All',
-        showForm: false
+        showForm: false,
+        exp: parseInt(localStorage.experience_bar,10)
     }
 
     componentDidMount() {
@@ -27,7 +25,6 @@ class TaskPage extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
-
             let name = localStorage.userName
             let result = data.filter(task => {
                 if (task.users[0].name === name)
@@ -46,7 +43,6 @@ class TaskPage extends React.Component {
     }
 
     addNewTask = (newTask) => {
-
         fetch('http://localhost:3000/tasks', {
             method: "POST",
             headers: {
@@ -68,7 +64,6 @@ class TaskPage extends React.Component {
     }
 
     createTasklist = (task) => {
-
         fetch('http://localhost:3000/tasklists', {
             method: "POST",
             headers: {
@@ -84,10 +79,10 @@ class TaskPage extends React.Component {
         .then(data => {
             this.setState({tasks: [...this.state.tasks, data.task]})
         })
-
     }
 
-    deleteTask = (task) => {
+    completeTask = (e, task) => {
+        e.preventDefault();
 
         fetch(`http://localhost:3000/tasks/${task.id}`,{
             method: "DELETE",
@@ -97,12 +92,39 @@ class TaskPage extends React.Component {
         })
         .then(resp => resp.json())
         .then(() => {
+            // add the tasks experience points attribute to the user.experience_bar
+            this.addExperiencePoints(e, task);
+
             let remainingTasks = this.state.tasks.filter(t => !(t === task))
             this.setState({
                 tasks: remainingTasks
             })
         })
+    }
 
+    addExperiencePoints = (e, task) => {
+        e.preventDefault();
+        // Patch request to the User/:id 
+        // take the task, and get the task.experience_points, and
+        // PATCH the experience_points by adding it to user.experience_bar within the 
+        // Body of the request.
+
+        fetch(`http://localhost:3000/users/${localStorage.userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                experience_bar: parseInt(localStorage.experience_bar, 10) + task.experience_points
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            localStorage.experience_bar = data.experience_bar
+            this.setState({
+                exp: localStorage.experience_bar
+            })
+        })
     }
 
     filteredTasks = () =>
@@ -114,17 +136,13 @@ class TaskPage extends React.Component {
 
 
     render(){
-
         const tasks = this.filteredTasks()
-
         return (
             <div className="Tasks">
                 <h1> TaskPage</h1>
-    
-                
                 <h1>TO DO LIST</h1>
-                    <br></br>
 
+                    <br></br>
                     <CategoryContainer 
                         tasks={this.state.tasks} 
                         categories={CATEGORIES}
@@ -146,8 +164,7 @@ class TaskPage extends React.Component {
                     />)}
 
                     <br></br>
-
-                    <TaskContainer tasks={tasks} deleteTask={this.deleteTask} />
+                    <TaskContainer tasks={tasks} completeTask={this.completeTask} />
                     <Profile 
                         username={localStorage.userName}
                         avatar={localStorage.avatar}
