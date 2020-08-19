@@ -142,7 +142,11 @@ class TaskPage extends React.Component {
                     <br></br>
 
                     <TaskContainer tasks={tasks} deleteTask={this.deleteTask} />
-                    <Profile />
+                    <Profile 
+                        username={localStorage.userName}
+                        avatar={localStorage.avatar}
+                        experience_bar={localStorage.experience_bar}
+                    />
 
                     < Link to='/board'>Message Board</Link>
                     <button onClick={(e)=> this.props.logOut(e)}>Log Out</button>
