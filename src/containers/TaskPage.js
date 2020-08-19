@@ -27,8 +27,14 @@ class TaskPage extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
+
+            let name = localStorage.userName
+            let result = data.filter(task => {
+                if (task.users[0].name === name)
+                return task
+            })
             this.setState({
-                tasks: data
+                tasks: result
             })
         })
     }
