@@ -162,8 +162,9 @@ class TaskPage extends React.Component {
                 /> 
 
                 <div className="App">
-                    <h1> TaskPage</h1>
-                    <h1>TO DO LIST</h1>
+                    <br></br>
+                    <h1 className='title'>VENI VIDI VICI</h1>
+                    <p>Conquer all your tasks!</p>
 
 
                         <CategoryContainer 
@@ -196,9 +197,9 @@ class TaskPage extends React.Component {
                             />
 
                         </div>
-                        
-                        {/* < Link to='/board'>Message Board</Link> */}
+                        <br></br>
                         <button className='logout' onClick={(e)=> this.props.logOut(e)}>Log Out</button>
+                        {/* < Link to='/board'>Message Board</Link> */}
         
                 </div>
             </div>

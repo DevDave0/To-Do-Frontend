@@ -8,7 +8,7 @@
   /* margin-left: auto; */
   /* float: left; */
   position: fixed;
-  left: 50px;
+  left: 70px;
   top: 50px;
 }
 
@@ -92,7 +92,7 @@ button.complete {
 .tasks .task > .label {
   background: lightcyan;
   color: rgb(10, 99, 99);
-  padding: 0.39rem;
+  padding: 8px 8px 8px 10px;
   border: solid hsl(240, 79%, 94%) 0.1rem;
   border-radius: 0.25rem;
 }
@@ -185,7 +185,7 @@ button.toggle:focus {
   background-color: #d8d8d8;
   border-radius: 20px;
   height: 20px;
-  width: 200px;
+  width: 170px;
 }
 
 .progress-done {
@@ -221,4 +221,17 @@ img {
 
 .trophy.icon.vhard {
   color: red
+}
+
+.exp-points {
+  text-align: center;
+}
+
+.username {
+  text-align: left;
+  font-family: serif;
+}
+
+.title {
+  font-family: serif;
 }

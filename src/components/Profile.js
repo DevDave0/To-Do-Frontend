@@ -56,11 +56,10 @@ class Profile extends React.Component {
 
         return (
             <div className="profile">
-                <h3>{username}</h3>
+                <h3 className='username'>{username}</h3>
                 <div><img className='profile-picture' src={checkExp()} alt='profile-pic' /></div>
-                <div>{`Experience: ${experience_bar}`}</div>
+                <div className='exp-points'>{`Experience: ${experience_bar}`}</div>
                 <ProgressBar done={value} />
-
             </div>
         )
 
