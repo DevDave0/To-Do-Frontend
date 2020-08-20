@@ -96,7 +96,7 @@ class App extends React.Component {
   render(){
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className="Home">
           <header className="App-header">
           
           <Route path="/sign_up" render={(routeProps) => (this.state.loggedIn) ? <Redirect to='/task_page' /> :

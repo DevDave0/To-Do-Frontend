@@ -136,12 +136,10 @@ class TaskPage extends React.Component {
         })
         .then(resp => resp.json())
         .then(() => {
-
             let remainingTasks = this.state.tasks.filter(t => !(t === task))
             this.setState({
                 tasks: remainingTasks
             })
-
         })
     }
 
@@ -156,50 +154,61 @@ class TaskPage extends React.Component {
     render(){
         const tasks = this.filteredTasks()
         return (
-            <div className="Tasks">
-                <h1> TaskPage</h1>
-                <h1>TO DO LIST</h1>
 
-                    <br></br>
-                    <CategoryContainer 
-                        tasks={this.state.tasks} 
-                        categories={CATEGORIES}
-                        selectedCategory={this.state.selectedCategory}
-                        setSelectedCategory={this.setSelectedCategory}
-                    />
+            <div>
+                <Profile 
+                username={localStorage.userName}
+                experience_bar={localStorage.experience_bar}
+                /> 
 
-                    <br></br>
-                    <h2>Tasks</h2>
-                    <FormToggle 
-                        on={this.state.showForm}
-                        toggle={() => this.setState({
-                            showForm: !this.state.showForm
-                        })}
-                    />
-                    {this.state.showForm && (
-                    <NewTaskForm
-                        addNewTask={this.addNewTask}
-                    />)}
+                <div className="App">
+                    <h1> TaskPage</h1>
+                    <h1>TO DO LIST</h1>
 
-                    <br></br>
-                    <TaskContainer 
-                        tasks={tasks} 
-                        completeTask={this.completeTask} 
-                        deleteTask={this.deleteTask}
-                    />
-                    <Profile 
-                        username={localStorage.userName}
-                        experience_bar={localStorage.experience_bar}
-                    />
 
-                    < Link to='/board'>Message Board</Link>
-                    <button onClick={(e)=> this.props.logOut(e)}>Log Out</button>
-    
+                        <CategoryContainer 
+                            tasks={this.state.tasks} 
+                            categories={CATEGORIES}
+                            selectedCategory={this.state.selectedCategory}
+                            setSelectedCategory={this.setSelectedCategory}
+                        />
+
+
+                        <div className='tasks'>
+                            <h2>Tasks</h2>
+                            <FormToggle 
+                                on={this.state.showForm}
+                                toggle={() => this.setState({
+                                    showForm: !this.state.showForm
+                                })}
+                            />
+
+                            {this.state.showForm && (
+                            <NewTaskForm
+                                addNewTask={this.addNewTask}
+                            />)}
+
+
+                            <TaskContainer 
+                                tasks={tasks} 
+                                completeTask={this.completeTask} 
+                                deleteTask={this.deleteTask}
+                            />
+
+                        </div>
+                        
+                        {/* < Link to='/board'>Message Board</Link> */}
+                        <button className='logout' onClick={(e)=> this.props.logOut(e)}>Log Out</button>
+        
+                </div>
             </div>
         )
     }
 
 }
+
+
+
 
 
 export default TaskPage

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CATEGORIES, DIFFICULTY, EXPERIENCE } from '../data';
+import { CATEGORIES, DIFFICULTY} from '../data';
 
 const NewTaskForm = (props) => {
 

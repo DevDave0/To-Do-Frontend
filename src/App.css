@@ -1,19 +1,177 @@
-/* .App {
-  text-align: center;
-} */
-
-/* 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App {
+  margin: auto;
+  width: 100%;
+  max-width: 45rem;
 }
- */
+
+.profile {
+  /* margin-left: auto; */
+  /* float: left; */
+  position: fixed;
+  left: 50px;
+  top: 50px;
+}
+
+.categories > button {
+  border-radius: 0;
+  background: #c3c3c3;
+  color: #1a1a1a;
+  font-weight: bold;
+  border: none;
+  border-top: black solid 0.1rem;
+  border-bottom: black solid 0.1rem;
+  border-left: black solid 0.1rem;
+  cursor: pointer;
+  width: 16.667%;
+  height: 2.5rem;
+}
+
+.categories > button:last-of-type {
+  border-radius: 0 0.25rem 00 0;
+  border-right: black solid 0.1rem;
+}
+
+.categories > button:first-of-type {
+  border-radius: 0.25rem 0 0 0;
+}
+
+.categories > button:focus {
+  outline: none;
+}
+
+.categories > button.selected {
+  background: lightblue;
+}
+
+.categories > button:hover {
+  filter: brightness(1.2);
+}
+
+.tasks {
+  border-radius: 0.5rem;
+  border: grey solid 0.1rem;
+  border-top: none;
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.tasks .task {
+  background: #ffffff99;
+  border: grey solid 0.1rem;
+  border-bottom: none;
+  padding: 0.25rem 1rem 0.25rem 0.25rem;
+  display: flex;
+}
+
+.tasks .task:first-of-type {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.tasks .task:last-of-type {
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom: grey solid 0.1rem;
+}
+
+.tasks .task > .name, .difficulty, .experience-points {
+  line-height: 3rem;
+  padding-left: 0.25rem;
+}
+
+button.complete {
+  line-height: 1.5rem;
+  padding-left: 0.25rem;
+  margin-left: auto;
+  border-radius: 0.5rem;
+  border: solid #c9c8c8 0.1rem;
+
+}
+
+.tasks .task > .label {
+  background: lightcyan;
+  color: rgb(10, 99, 99);
+  padding: 0.39rem;
+  border: solid hsl(240, 79%, 94%) 0.1rem;
+  border-radius: 0.25rem;
+}
+
+.tasks .task > button.delete {
+  /* margin-left: auto; */
+  border-radius: 0.5rem;
+  background: #ffe9ed;
+  color: #DC143C;
+  font-weight: bolder;
+  font-size: 1rem;
+  border: solid #ffb1b1 0.1rem;
+  cursor: pointer;
+}
+
+.tasks .task > button.delete:hover {
+  filter: brightness(1.1);
+}
+
+.tasks .task > button.complete:hover {
+  filter: brightness(1.1);
+}
+
+.new-task-form {
+  border: solid lightblue 0.1rem;
+  height: 2rem;
+  display: flex;
+}
+
+.new-task-form > input[type="text"] {
+  font-size: 1.5rem;
+  line-height: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.new-task-form > input[type="submit"] {
+  background: #6363ff;
+  color: white;
+  border: none;
+  height: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 7rem;
+}
+
+.new-task-form > select {
+  width: 7rem;
+  height: 100%;
+  padding-left: 1rem;
+}
+
+.new-task-form > input[type="submit"]:hover {
+  filter: brightness(1.2)
+}
+
+button.toggle {
+  top: 0.5rem;
+  right: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #f0f7fd;
+  color: #494949;
+  border: solid #a0a0a0 0.1rem;
+}
+
+button.toggle.on {
+  background: #ddf1ff;
+  color: #3d454b;
+  border: solid #6abefa 0.1rem;
+}
+
+
+button.toggle:focus {
+  outline: none;
+}
+
 
 .progress-body {
   display: flex;
@@ -44,9 +202,23 @@
 }
 
 img {
-  height: auto;
+  height: 200px;
   width: 150px;
   display: flex;
-  transition: 1s ease 0.3s;
+}
 
+.trophy.icon.easy {
+  color: lightgreen
+}
+
+.trophy.icon.m {
+  color: rgb(47, 228, 228)
+}
+
+.trophy.icon.hard {
+  color: orange
+}
+
+.trophy.icon.vhard {
+  color: red
 }
