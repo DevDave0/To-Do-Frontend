@@ -21,3 +21,5 @@ Video demo link:
 2. Semantic-UI framework with custom CSS
 3. Ruby on Rails API with JWT Authentication
 4. Usage of React Hooks to manage state
+
+Project backend: https://github.com/DevDave0/To-Do-Backend
