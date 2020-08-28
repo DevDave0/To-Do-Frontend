@@ -1,7 +1,7 @@
 # Veni Vidi Vici
 A web application for creating and visualizing tasks. Veni Vidi Vici "gamify's" a normal to-do list!
 
-<!-- ![Veni Vidi Vici](https://github.com/DevDave0/trekker/blob/master/trekker.png) -->
+![Veni Vidi Vici](https://github.com/DevDave0/To-Do-Frontend/blob/master/Screen%20Shot%202020-08-20%20at%2011.19.58%20AM.png)
 
 ## Project Details 
 
