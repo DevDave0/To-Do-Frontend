@@ -12,7 +12,7 @@ Veni Vidi Vici is a web application that allows a user to:
 4. Allows a user to delete tasks. 
 5. Visualizes the level of the user with an Avatar that changes with each level up. 
 
-Video demo link: 
+Video demo link: https://www.youtube.com/watch?v=XLV9ZdpmQOs
 
 
 ## Stack
