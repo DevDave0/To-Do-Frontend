@@ -5,7 +5,6 @@ import Profile from '../components/Profile'
 import NewTaskForm from '../components/NewTaskForm'
 import FormToggle from '../components/FormToggle'
 import { CATEGORIES } from '../data'
-import { Link } from 'react-router-dom'
 
 
 class TaskPage extends React.Component {
@@ -29,9 +28,8 @@ class TaskPage extends React.Component {
         .then(data => {
             let name = localStorage.userName
             let result = data.filter(task => {
-                if (task.users[0].name === name){
-                    return task
-                }
+                if (task.users[0] && task.users[0].name === name){
+                    return task}
             })
             this.setState({
                 tasks: result
